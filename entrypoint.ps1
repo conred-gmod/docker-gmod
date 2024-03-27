@@ -26,10 +26,10 @@ trap {
                 "-clientport", "27005",
                 "-sport", "26900",
                 "-console",
-                "+sv_setsteamaccount", $GLST,
+                "+sv_setsteamaccount", $env:GLST,
                 "-game", "garrysmod",
-                "-maxplayers", $MaxPlayers,
-                "+host_workshop_collection", $CollectionID,
+                "-maxplayers", $env:MaxPlayers,
+                "+host_workshop_collection", $env:CollectionID,
                 "+gamemode", "sandbox",
                 "+map", "gm_construct" `
             -PassThru

@@ -22,7 +22,7 @@ RUN apt update \
  && chmod -R a=u /opt/steam /opt/overlay \
  && adduser -D steam
 
-
+ENV GLST=0 CollectionID=0 MaxPlayers=1
 COPY entrypoint.ps1 /
 
 EXPOSE 27015/tcp 27015/udp 27020/udp
