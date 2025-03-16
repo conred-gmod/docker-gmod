@@ -1,7 +1,7 @@
 FROM hackebein/steamcmd:20.04
 
-RUN apt update \
- && apt install -y \
+RUN apt-get update \
+ && apt-get install -y \
         curl \
         jq \
         lib32stdc++6 \
@@ -10,13 +10,12 @@ RUN apt update \
         wget \
         apt-transport-https \
         software-properties-common \
- && apt clean \
  && source /etc/os-release \
  && wget -q https://packages.microsoft.com/config/ubuntu/$VERSION_ID/packages-microsoft-prod.deb \
  && dpkg -i packages-microsoft-prod.deb \
  && rm packages-microsoft-prod.deb \
- && apt update \
- && apt install -y powershell \
+ && apt-get update \
+ && apt-get install -y powershell \
  && rm -rf /var/lib/apt/lists/* \
  && mkdir -p /opt/steam /opt/overlay /srv \
  && chmod -R a=u /opt/steam /opt/overlay \
