@@ -25,7 +25,7 @@ RUN apt update \
 ENV GLST=0 CollectionID=0 MaxPlayers=1
 COPY entrypoint.ps1 /
 
-EXPOSE 27015/tcp 27015/udp 27020/udp
+EXPOSE 27005/udp 27015/udp
 
 WORKDIR /opt/steam
 VOLUME /opt/steam

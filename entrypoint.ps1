@@ -19,19 +19,27 @@ trap {
 
         Write-Host "Starting server..."
 
+        $SrvArgs = @(
+            "-strictportbind",
+            "-port", "27015",
+            #"-tv_port", "27020",
+            "-clientport", "27005",
+            #"-sport", "26900",
+            "-console",
+            "+sv_setsteamaccount", $(Get-Content "/run/secrets/glst.txt"),
+            "-game", "garrysmod",
+            "-maxplayers", $env:MaxPlayers,
+            "+host_workshop_collection", $env:CollectionID,
+            "+gamemode", "sandbox",
+            "+map", "gm_construct"
+        )
+
+        if($env:Testing) {
+            $SrvArgs += @("+hide_server", "1")
+        }
+
         $ServerProcess = Start-Process -FilePath "/srv/srcds" `
-            -ArgumentList "-strictportbind",
-                "-port", "27015",
-                "-tv_port", "27020",
-                "-clientport", "27005",
-                "-sport", "26900",
-                "-console",
-                "+sv_setsteamaccount", $env:GLST,
-                "-game", "garrysmod",
-                "-maxplayers", $env:MaxPlayers,
-                "+host_workshop_collection", $env:CollectionID,
-                "+gamemode", "sandbox",
-                "+map", "gm_construct" `
+            -ArgumentList $SrvArgs`
             -PassThru
 
         Wait-Process $ServerProcess
