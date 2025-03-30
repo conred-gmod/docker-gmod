@@ -20,7 +20,7 @@ COPY entrypoint.ps1 /
 EXPOSE 27005/udp 27015/udp
 
 WORKDIR /opt/steam
-VOLUME /opt/steam
+VOLUME /opt/steam /srv /srv_content
 USER steam
 ENV POWERSHELL_TELEMETRY_OPTOUT=1
 ENTRYPOINT ["pwsh", "/entrypoint.ps1"]
