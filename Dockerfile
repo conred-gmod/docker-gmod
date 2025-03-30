@@ -1,4 +1,4 @@
-FROM hackebein/steamcmd:20.04
+FROM cm2network/steamcmd:steam
 
 RUN apt-get update \
  && apt-get install -y \
@@ -17,9 +17,8 @@ RUN apt-get update \
  && apt-get update \
  && apt-get install -y powershell \
  && rm -rf /var/lib/apt/lists/* \
- && mkdir -p /opt/steam /opt/overlay /srv \
- && chmod -R a=u /opt/steam /opt/overlay \
- && adduser -D steam
+ && mkdir -p /opt/steam /opt/overlay /srv  \
+ && chmod -R a=u /opt/steam /opt/overlay
 
 ENV GLST=0 CollectionID=0 MaxPlayers=1
 COPY entrypoint.ps1 /

@@ -4,13 +4,15 @@ $DownloadSrv = $true
 
 $ServerProcess = $null
 
+Set-Location $env:STEAMCMDDIR
+
 trap {
     while ($true) {
 
         if($DownloadSrv) {
             Write-Host "Downloading/updating server..."
 
-            /opt/steamcmd/steamcmd `
+            ./steamcmd.sh `
                 +force_install_dir "/srv" `
                 +login anonymous `
                 +app_update 4020 validate `
