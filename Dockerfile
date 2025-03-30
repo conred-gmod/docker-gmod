@@ -1,4 +1,4 @@
-FROM cm2network/steamcmd:steam
+FROM cm2network/steamcmd:root
 
 RUN apt-get update \
  && apt-get install -y \
