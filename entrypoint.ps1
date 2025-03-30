@@ -28,7 +28,7 @@ trap {
             "-clientport", "27005",
             #"-sport", "26900",
             "-console",
-            "+sv_setsteamaccount", $(Get-Content "/run/secrets/glst.txt"),
+            "+sv_setsteamaccount", $(Get-Content "/run/secrets/glst"),
             "-game", "garrysmod",
             "-maxplayers", $env:MaxPlayers,
             "+host_workshop_collection", $env:CollectionID,
